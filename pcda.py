@@ -334,7 +334,7 @@ def check_dns_health(domain: str, pm_token: str) -> int:
     if domain:
         domains = [d for d in domains if d.get("name", "").lower() == domain]
         if not domains:
-            print(f"Error: domain '{domain}' is not in this PurelyMail account.")
+            print("Error: requested domain is not in this PurelyMail account.")
             return 1
 
     if not domains:
@@ -712,7 +712,10 @@ def add_cloudflare_records(
     conflicts = []
 
     for record in wanted:
-        label = f"{record['type']} {record['name']} → {record['content']}"
+        content_display = record["content"]
+        if content_display == ownership_code:
+            content_display = "<ownership code>"
+        label = f"{record['type']} {record['name']} → {content_display}"
 
         if record["type"] == "MX":
             extras = _extra_mx_records(existing, record, domain)
@@ -850,7 +853,7 @@ def main():
     cf_token = cfg["cf_token"]
     cf_account_id = cfg["cf_account_id"]
 
-    print(f"=== Adding {domain} to PurelyMail via Cloudflare DNS ===\n")
+    print("=== Adding domain to PurelyMail via Cloudflare DNS ===\n")
 
     # 1. Get the PurelyMail ownership code (account-level, not per-domain)
     print("Fetching PurelyMail ownership code...")
@@ -859,7 +862,7 @@ def main():
     print("  Ownership code retrieved.\n")
 
     # 2. Find the Cloudflare zone for this domain
-    print(f"Looking up Cloudflare zone for {domain}...")
+    print("Looking up Cloudflare zone...")
     zone_id = get_zone_id(domain, cf_token, cf_account_id)
     print("  Zone found.\n")
 
