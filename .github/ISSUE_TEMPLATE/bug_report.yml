@@ -1,0 +1,66 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill out as much as you can — it helps fix things faster.
+
+  - type: input
+    id: command
+    attributes:
+      label: Command run
+      description: The exact command you ran (redact any tokens)
+      placeholder: "uv run ./pcda.py --domain example.com --non-interactive"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened? Include the full terminal output (redact tokens).
+    validations:
+      required: true
+
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      placeholder: "python --version"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "macOS 15, Ubuntu 24.04, etc."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: run-method
+    attributes:
+      label: How are you running pcda?
+      options:
+        - uv run ./pcda.py
+        - python pcda.py
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might be relevant (e.g., Cloudflare Email Routing enabled, specific DNS record state)

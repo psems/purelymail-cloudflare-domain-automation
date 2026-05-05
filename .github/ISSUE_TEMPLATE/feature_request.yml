@@ -1,0 +1,37 @@
+name: Feature Request
+description: Suggest an idea or improvement
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature requests are welcome. Please describe the problem you're trying to solve, not just the solution — it helps evaluate the best approach.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem or workflow gap does this address?
+      placeholder: "I find myself having to manually... when pcda could..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: What would you like pcda to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds or alternative approaches you've thought about?
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else — example commands, related flags, links, etc.

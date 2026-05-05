@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+.python-version
+
+# Distribution / packaging (not used but common to exclude)
+dist/
+build/
+*.egg-info/
+
+# uv
+.uv/
+
+# Linters / type checkers
+.ruff_cache/
+.mypy_cache/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Credentials and secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Copilot agent skills (internal tooling, not part of the project)
+.github/skills/
